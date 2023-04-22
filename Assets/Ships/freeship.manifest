@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4105094562
+CRC: 2613270051
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e616251b71e9fbdca62e449d78fef461
+    Hash: 4f12a0c5fb55431e38dba8657e4dde7b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 27b62f629e7ed234e98cb020451aa6cc
@@ -45,14 +45,15 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/FreeShip/Icon.png
-- Assets/FreeShip/spaceship.mesh
-- Assets/FreeShip/Material #2.mat
-- Assets/FreeShip/Turret_2.json
-- Assets/FreeShip/spaceship_Material _2_Normal.png
-- Assets/FreeShip/Turret_1.json
-- Assets/FreeShip/ShipData.json
-- Assets/FreeShip/spaceship_Material _2_MetallicSmoothness.png
-- Assets/FreeShip/spaceship_Material _2_AlbedoTransparency.png
-- Assets/FreeShip/ShipBlank.prefab
+- Assets/ShipsResources/FreeShip/Icon.png
+- Assets/ShipsResources/FreeShip/spaceship.mesh
+- Assets/ShipsResources/FreeShip/Material #2.mat
+- Assets/ShipsResources/FreeShip/Turret_2.json
+- Assets/ShipsResources/FreeShip/spaceship_Material _2_Normal.png
+- Assets/ShipsResources/FreeShip/Turret_1.json
+- Assets/ShipsResources/FreeShip/Turret_0.json
+- Assets/ShipsResources/FreeShip/ShipData.json
+- Assets/ShipsResources/FreeShip/spaceship_Material _2_MetallicSmoothness.png
+- Assets/ShipsResources/FreeShip/spaceship_Material _2_AlbedoTransparency.png
+- Assets/ShipsResources/FreeShip/ShipBlank.prefab
 Dependencies: []

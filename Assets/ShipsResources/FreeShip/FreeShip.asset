@@ -27,4 +27,5 @@ MonoBehaviour:
   Turrets:
   - {fileID: 4900000, guid: 3d1da209059bc8247a6645f2a0668410, type: 3}
   - {fileID: 4900000, guid: 64b30e659ac9aea4ca427a9de041ced0, type: 3}
+  - {fileID: 4900000, guid: 4f92308be50993042a7457dba82a31c0, type: 3}
   ShipData: {fileID: 4900000, guid: f251fa8b3eea22242a5094c1ebd08a20, type: 3}
