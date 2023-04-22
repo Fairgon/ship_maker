@@ -110,7 +110,13 @@ namespace ShipMaker.CEditor
                 GUI.matrix = matrixBackup;
 
                 if(component.hasSpecialStats)
+                {
+                    matrixBackup = GUI.matrix;
+                    GUIUtility.RotateAroundPivot(component.transform.localEulerAngles.y, pivot);
                     Graphics.DrawTexture(new Rect(x + 1, y + 13, 16, 16), sprites.Find(s => s.name == "star").texture);
+                    GUI.matrix = matrixBackup;
+                }
+                    
             }
         }
     }
