@@ -1,0 +1,59 @@
+ManifestFileVersion: 0
+CRC: 2059616268
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8f82bd285b22208f9e3e07392a94327a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 27b62f629e7ed234e98cb020451aa6cc
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: ed4047f8e74da624ba6e66f9ded4b851, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 943c486bf0b16bd459addb396dd882ce, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/FreeShip/Icon.png
+- Assets/FreeShip/spaceship.mesh
+- Assets/FreeShip/Material #2.mat
+- Assets/FreeShip/Turret_2.json
+- Assets/FreeShip/spaceship_Material _2_Normal.png
+- Assets/FreeShip/Turret_1.json
+- Assets/FreeShip/Turret_0.json
+- Assets/FreeShip/ShipData.json
+- Assets/FreeShip/spaceship_Material _2_MetallicSmoothness.png
+- Assets/FreeShip/spaceship_Material _2_AlbedoTransparency.png
+- Assets/FreeShip/ShipBlank.prefab
+Dependencies: []

@@ -1,0 +1,13 @@
+ManifestFileVersion: 0
+CRC: 89314283
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: redroadster
+      Dependencies: {}
+    Info_1:
+      Name: testship
+      Dependencies: {}
+    Info_2:
+      Name: freeship
+      Dependencies: {}

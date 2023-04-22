@@ -1,0 +1,62 @@
+{
+    "turretName": "turret_3",
+    "turretIndex": 3,
+    "type": 1,
+    "degreesLimit": 35.0,
+    "turnSpeed": 20.0,
+    "spriteName": "",
+    "spinalMount": false,
+    "totalSpace": 2.0,
+    "maxInstalledWeapons": 2,
+    "turretMode": 1,
+    "manned": false,
+    "hasSpecialStats": false,
+    "baseWeaponMods": {
+        "dmgBonus": 0.0,
+        "tempDmgBonus": [],
+        "criticalChanceBonus": 0.0,
+        "criticalDamageBonus": 0.0,
+        "armorPenBonus": 0.0,
+        "massKiller": false,
+        "rangeBonus": 0,
+        "rangeBonusPerc": 0.0,
+        "proximityDmgMod": 0.0,
+        "aoeBonus": 0.0,
+        "projectileSpeedBonus": 0,
+        "projectileSpeedPerc": 0.0,
+        "autoTargeting": false,
+        "heatCapBonus": 0,
+        "heatCapMod": 0.0,
+        "weaponHeatMod": 0.0,
+        "chargeTime": 0.0,
+        "chargedFireTime": 0.0,
+        "chargedFireCooldown": 0.0,
+        "fluxDamageMod": 1.0,
+        "spinalMounted": false,
+        "explodeBoostChance": 0,
+        "explodeBoost": 0.0,
+        "sizeMod": 0.0,
+        "weaponChargedBaseDamageBoost": 1.0
+    },
+    "extraGuns": [
+        "gun2",
+        "gun1"
+    ],
+    "alternateFire": false,
+    "iconTranslate": {
+        "x": -0.6899999976158142,
+        "y": 0.3799999952316284
+    },
+    "extraGunsParent": "turret_3_battery",
+    "extraGunsParentTransform": {
+        "instanceID": -5716
+    },
+    "extraGunsTransforms": [
+        {
+            "instanceID": -5730
+        },
+        {
+            "instanceID": -5732
+        }
+    ]
+}

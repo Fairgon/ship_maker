@@ -1,0 +1,51 @@
+ManifestFileVersion: 0
+CRC: 2341393330
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d1be090d9cc62c7e3acd9625f47f30e8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f0d92630e2830778ffe62eacedd8a204
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/redRoadster/Turret_1.json
+- Assets/redRoadster/Mesh_1.mesh
+- Assets/redRoadster/Turret_2.json
+- Assets/redRoadster/Mesh_2.mesh
+- Assets/redRoadster/ShipData.json
+- Assets/redRoadster/Mat.mat
+- Assets/redRoadster/Icon.png
+- Assets/redRoadster/ShipBlank.prefab
+- Assets/redRoadster/Texture.png
+Dependencies: []
