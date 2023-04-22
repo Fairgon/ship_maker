@@ -1,13 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor.Callbacks;
-using UnityEditor.UIElements;
-using UnityEngine.UIElements;
-using ShipMaker.EditorData;
-using System.Collections.Generic;
-using System;
 using ShipMaker.Data;
-using System.Linq;
 
 namespace ShipMaker.CEditor
 {

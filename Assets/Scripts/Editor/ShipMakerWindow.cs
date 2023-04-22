@@ -5,7 +5,6 @@ using UnityEditor.Callbacks;
 using ShipMaker.EditorData;
 using ShipMaker.Data;
 using System.Collections.Generic;
-using System.Collections;
 using UnityEditorInternal;
 
 namespace ShipMaker.CEditor
