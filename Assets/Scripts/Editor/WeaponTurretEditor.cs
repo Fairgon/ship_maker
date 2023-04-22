@@ -2,17 +2,14 @@
 using UnityEditor;
 using UnityEditorInternal;
 using ShipMaker.Data;
-using ShipMaker.EditorData;
 using System.Collections.Generic;
-using UnityEngine.UIElements;
-using UnityEditor.UIElements;
 
 namespace ShipMaker.CEditor
 {
     [CustomEditor(typeof(WeaponTurretData), true)]
     public class WeaponTurretEditor : Editor
     {
-        private readonly List<string> sprites = new List<string>() { "None", "dual_gun", "tri_gun", "quad_gun", "five_gun", "spinal_gun" };
+        private readonly List<string> sprites = new List<string>() { "None", "cannon_core", "dual_gun", "tri_gun", "quad_gun", "five_gun", "spinal_gun" };
 
         public SerializedProperty turretName;
         public SerializedProperty turretIndex;

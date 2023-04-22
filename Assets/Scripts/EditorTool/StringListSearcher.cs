@@ -8,7 +8,6 @@ using UnityEditor.Experimental.GraphView;
 
 namespace ShipMaker.EditorData
 {
-    [CreateAssetMenu(fileName = "Ship Bonuses", menuName = "ScriptableObjects/Ship Bonuses", order = 1)]
     public class StringListSearcher : ScriptableObject, ISearchWindowProvider
     {
         private static BonusesData bonusesData;

@@ -1,0 +1,60 @@
+ManifestFileVersion: 0
+CRC: 1701857597
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a96602e5dae6b38e4afccbf38163c4be
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3dbabb8e835e64ab4553b8dc0690e221
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: ed4047f8e74da624ba6e66f9ded4b851, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 943c486bf0b16bd459addb396dd882ce, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/redRoadster/Turret_1.json
+- Assets/redRoadster/Kurma LowRes_Glass_MetallicSmoothness.png
+- Assets/redRoadster/Mesh_1.mesh
+- Assets/redRoadster/Kurma LowRes_Glass_Emission.png
+- Assets/redRoadster/Mesh_2.mesh
+- Assets/redRoadster/ShipData.json
+- Assets/redRoadster/Mat.mat
+- Assets/redRoadster/Icon.png
+- Assets/redRoadster/ShipBlank.prefab
+- Assets/redRoadster/Valor_Glass.mat
+- Assets/redRoadster/Texture.png
+- Assets/redRoadster/Turret_0.json
+Dependencies: []

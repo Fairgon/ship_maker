@@ -1,18 +1,17 @@
 {
-    "turretName": "w1",
-    "turretIndex": 0,
+    "turretName": "w2",
+    "turretIndex": 1,
     "type": 1,
-    "degreesLimit": 10.0,
-    "turnSpeed": 20.0,
-    "spriteName": "",
-    "spinalMount": true,
+    "degreesLimit": 0.0,
+    "turnSpeed": 0.0,
+    "spriteName": "cannon_core",
+    "spinalMount": false,
     "totalSpace": 0.0,
     "maxInstalledWeapons": 0,
     "turretMode": 1,
     "manned": false,
-    "hasSpecialStats": false,
+    "hasSpecialStats": true,
     "baseWeaponMods": {
-        "weponIndex": 0,
         "dmgBonus": 0.0,
         "tempDmgBonus": [],
         "criticalChanceBonus": 0.0,
@@ -42,7 +41,12 @@
     "extraGuns": [],
     "alternateFire": false,
     "iconTranslate": {
-        "x": -0.5,
-        "y": 1.0
-    }
+        "x": 0.5,
+        "y": 1.25
+    },
+    "extraGunsParent": "",
+    "extraGunsParentTransform": {
+        "instanceID": 0
+    },
+    "extraGunsTransforms": []
 }

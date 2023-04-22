@@ -1,122 +1,224 @@
-﻿using UnityEditor;
-using UnityEngine;
-using UnityEditor.Callbacks;
-using UnityEditor.UIElements;
-using UnityEngine.UIElements;
-using ShipMaker.EditorData;
-using System.Collections.Generic;
+﻿using System.IO;
 using System;
+using UnityEngine;
+using UnityEditor;
+using UnityEditor.Callbacks;
+using ShipMaker.EditorData;
+using ShipMaker.Data;
+using System.Collections.Generic;
+using UnityEditorInternal;
 
 namespace ShipMaker.CEditor
 {
     public class ShipMakerWindow : EditorWindow
     {
-        public static BundleData Data;
+        public static BundleData curData;
 
-        [MenuItem("Window/Ship Maker")]
-        public static bool ShowWindow()
+        private ReorderableList matList;
+        private ReorderableList texturList;
+        private ReorderableList meshList;
+        private ReorderableList turList;
+
+        private GUIStyle titleStyle;
+        private string path;
+
+        [OnOpenAsset(1)]
+        public static bool ShowWindow(int instanceId, int line)
         {
-            if (Data == null)
-                Data = new BundleData();
+            UnityEngine.Object item = EditorUtility.InstanceIDToObject(instanceId);
 
-            ShipMakerWindow window = (ShipMakerWindow)GetWindow<ShipMakerWindow>(typeof(ShipMakerWindow));
-            window.titleContent = new GUIContent("Ship maker");
-            window.minSize = new Vector2(500, 250);
+            if (item is BundleData)
+            {
+                curData = (BundleData)item;
 
-            window.position = new Rect(Screen.width / 2, Screen.height / 2, 500, 250);
+                ShipMakerWindow window = (ShipMakerWindow)GetWindow<ShipMakerWindow>(typeof(ShipMakerWindow));
+                window.titleContent = new GUIContent("Ship Builder");
+                window.minSize = new Vector2(500, 535);
+                
+                window.position = new Rect(Screen.width / 2, Screen.height / 2, 500, 250);
+            }
 
             return true;
         }
+
         public void OnEnable()
         {
-            // Create some list of data, here simply numbers in interval [1, 1000]
-            const int itemCount = 1000;
-            var items = new List<string>(itemCount);
-            for (int i = 1; i <= itemCount; i++)
-                items.Add(i.ToString());
+            matList = new ReorderableList(curData.Materials, typeof(UnityEngine.Object), true, true, true, true);
+            matList.drawElementCallback = MaterialsDrawCallback;
+            matList.drawHeaderCallback = (Rect rect) => { EditorGUI.PrefixLabel(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), new GUIContent("Materials"), EditorStyles.boldLabel); };
 
-            // The "makeItem" function will be called as needed
-            // when the ListView needs more items to render
-            Func<VisualElement> makeItem = () => new Label();
+            texturList = new ReorderableList(curData.Textures, typeof(UnityEngine.Object), true, true, true, true);
+            texturList.drawElementCallback = TexturesDrawCallback;
+            texturList.drawHeaderCallback = (Rect rect) => { EditorGUI.PrefixLabel(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), new GUIContent("Textures"), EditorStyles.boldLabel); };
 
-            // As the user scrolls through the list, the ListView object
-            // will recycle elements created by the "makeItem"
-            // and invoke the "bindItem" callback to associate
-            // the element with the matching data item (specified as an index in the list)
-            Action<VisualElement, int> bindItem = (e, i) => (e as Label).text = items[i];
+            meshList = new ReorderableList(curData.Meshes, typeof(UnityEngine.Object), true, true, true, true);
+            meshList.drawElementCallback = MeshesDrawCallback;
+            meshList.drawHeaderCallback = (Rect rect) => { EditorGUI.PrefixLabel(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), new GUIContent("Meshes"), EditorStyles.boldLabel); };
 
-            // Provide the list view with an explict height for every row
-            // so it can calculate how many items to actually display
-            const int itemHeight = 16;
-
-            var listView = new ListView(items, itemHeight, makeItem, bindItem);
-
-            listView.selectionType = SelectionType.Multiple;
-
-            listView.onItemChosen += obj => Debug.Log(obj);
-            listView.onSelectionChanged += objects => Debug.Log(objects);
-
-            listView.style.flexGrow = 1.0f;
-
-            rootVisualElement.Add(listView);
-
-            GenerateToolbar();
+            turList = new ReorderableList(curData.Turrets, typeof(UnityEngine.Object), true, true, true, true);
+            turList.drawElementCallback = TurretsDrawCallback;
+            turList.drawHeaderCallback = (Rect rect) => { EditorGUI.PrefixLabel(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), new GUIContent("Turrets"), EditorStyles.boldLabel); };
         }
 
-        // Generating toolbar
-        private void GenerateToolbar()
+        private void TurretsDrawCallback(Rect rect, int index, bool isActive, bool isFocused)
         {
-            Toolbar toolbar = new Toolbar();
-
-            // Save button
-            Button saveBtn = new Button()
-            {
-                text = "Save"
-            };
-            saveBtn.clicked += () =>
-            {
-                Debug.Log(Data.Icon);
-                //Save();
-            };
-            toolbar.Add(saveBtn);
-
-            //// Load button
-            //Button loadBtn = new Button()
-            //{
-            //    text = "Load"
-            //};
-            //loadBtn.clicked += () =>
-            //{
-            //    Load();
-            //};
-            //toolbar.Add(loadBtn);
-
-            rootVisualElement.Add(toolbar);
+            curData.Turrets[index] = EditorGUI.ObjectField(
+                                    new Rect(rect.x, rect.y + 2, rect.width, EditorGUIUtility.singleLineHeight),
+                                    GUIContent.none,
+                                    curData.Turrets[index],
+                                    typeof(TextAsset),
+                                    false);
         }
 
-        private void CreateGUI()
+        private void MeshesDrawCallback(Rect rect, int index, bool isActive, bool isFocused)
         {
-            var root = rootVisualElement;
+            curData.Meshes[index] = EditorGUI.ObjectField(
+                                    new Rect(rect.x, rect.y + 2, rect.width, EditorGUIUtility.singleLineHeight),
+                                    GUIContent.none,
+                                    curData.Meshes[index],
+                                    typeof(Mesh),
+                                    false);
+        }
 
-            ObjectField spriteField = new ObjectField("Sprite")
+        private void TexturesDrawCallback(Rect rect, int index, bool isActive, bool isFocused)
+        {
+            curData.Textures[index] = EditorGUI.ObjectField(
+                                    new Rect(rect.x, rect.y + 2, rect.width, EditorGUIUtility.singleLineHeight),
+                                    GUIContent.none,
+                                    curData.Textures[index],
+                                    typeof(Texture),
+                                    false);
+        }
+
+        private void MaterialsDrawCallback(Rect rect, int index, bool isActive, bool isFocused)
+        {
+            curData.Materials[index] = EditorGUI.ObjectField(
+                                    new Rect(rect.x, rect.y + 2, rect.width, EditorGUIUtility.singleLineHeight),
+                                    GUIContent.none,
+                                    curData.Materials[index],
+                                    typeof(Material),
+                                    false);
+        }
+
+        private void OnGUI()
+        {
+            titleStyle = new GUIStyle(EditorStyles.largeLabel)
             {
-                objectType = typeof(Sprite),
-                value = Data.Icon
+                alignment = TextAnchor.MiddleCenter
             };
 
-            spriteField.RegisterValueChangedCallback(evt => Data.Icon = (Sprite)evt.newValue);
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-            root.Add(spriteField);
+                EditorGUILayout.LabelField("Ship Builder", titleStyle);
 
-            //ListView materialsList = new ListView();
+                EditorGUILayout.BeginVertical(EditorStyles.objectFieldThumb);
 
-            //root.Add(materialsList);
+                    curData.Name = EditorGUILayout.TextField("Name", curData.Name);
+                    curData.Icon = (Sprite)EditorGUILayout.ObjectField("Icon", curData.Icon, typeof(Sprite), false);
+                    curData.ShipBlank = (GameObject)EditorGUILayout.ObjectField("Ship Prefab", curData.ShipBlank, typeof(GameObject), false);
+                    curData.ShipData = (TextAsset)EditorGUILayout.ObjectField("ShipData", curData.ShipData, typeof(TextAsset), false);
 
-            //materialsList.makeItem = () => new ObjectField() { objectType = typeof(Material) };
-            //materialsList.bindItem = (item, index) => { (item as ObjectField).value = Data.Materials[index]; };
-            //materialsList.itemsSource = Data.Materials;
-            //materialsList.itemHeight = 10;
+                    turList.DoLayoutList();
+                    matList.DoLayoutList();
+                    texturList.DoLayoutList();
+                    meshList.DoLayoutList();
 
+                EditorGUILayout.EndVertical();
+
+            EditorGUILayout.EndVertical();
+
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+                EditorGUILayout.BeginVertical(EditorStyles.objectFieldThumb);
+
+                    if (GUILayout.Button("Create Ship Data"))
+                    {
+                        SerializeData();
+                    }
+
+                    if (GUILayout.Button("Create Ship Asset"))
+                    {
+                        CreateAsset();
+                    }
+
+                EditorGUILayout.EndVertical();
+            
+            EditorGUILayout.EndVertical();
+        }
+
+        private void CheckPath()
+        {
+            if (curData.Name == "")
+            {
+                Debug.LogError("Enter a name.");
+
+                return;
+            }
+
+            path = Application.dataPath + "/" + curData.Name;
+
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+        }
+
+        private void CreateAsset()
+        {
+            CheckPath();
+
+            List<string> assetNames = new List<string>();
+
+            assetNames.Add(AssetDatabase.GetAssetPath(curData.Icon));
+            assetNames.Add(AssetDatabase.GetAssetPath(curData.ShipBlank));
+            assetNames.Add(AssetDatabase.GetAssetPath(curData.ShipData));
+
+            foreach(TextAsset turret in curData.Turrets)
+            {
+                assetNames.Add(AssetDatabase.GetAssetPath(turret));
+            }
+
+            foreach(Material mat in curData.Materials)
+            {
+                assetNames.Add(AssetDatabase.GetAssetPath(mat));
+            }
+
+            foreach (Texture t in curData.Textures)
+            {
+                assetNames.Add(AssetDatabase.GetAssetPath(t));
+            }
+
+            foreach (Mesh mesh in curData.Meshes)
+            {
+                assetNames.Add(AssetDatabase.GetAssetPath(mesh));
+            }
+
+            AssetBundleBuild[] buildMap = new AssetBundleBuild[1];
+
+            buildMap[0].assetBundleName = curData.Name;
+            buildMap[0].assetNames = assetNames.ToArray();
+
+            BuildPipeline.BuildAssetBundles("Assets/Ships",
+                                            buildMap,
+                                            BuildAssetBundleOptions.None,
+                                            BuildTarget.StandaloneWindows);
+        }
+
+        private void SerializeData()
+        {
+            CheckPath();
+
+            string jsonString;
+
+            MShipModelData modelData = curData.ShipBlank.GetComponent<MShipModelData>();
+
+            jsonString = JsonUtility.ToJson(modelData, true);
+
+            File.WriteAllText(path + "/ShipData.json", jsonString);
+
+            foreach (WeaponTurretData w in modelData.transform.GetComponentsInChildren<WeaponTurretData>())
+            {
+                jsonString = JsonUtility.ToJson(w, true);
+                File.WriteAllText(path + "/Turret_" + w.turretIndex + ".json", jsonString);
+            }
         }
     }
 }

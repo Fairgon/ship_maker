@@ -46,8 +46,12 @@
     "extraGuns": [],
     "alternateFire": false,
     "iconTranslate": {
-        "x": -1.2,
-        "y": 1.85
+        "x": -1.2000000476837159,
+        "y": 1.850000023841858
+    },
+    "extraGunsParent": "",
+    "extraGunsParentTransform": {
+        "instanceID": 0
     },
     "extraGunsTransforms": []
 }
