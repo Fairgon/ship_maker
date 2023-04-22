@@ -1,18 +1,18 @@
 ﻿using System.IO;
-using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using ShipMaker.EditorData;
 using ShipMaker.Data;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEditorInternal;
 
 namespace ShipMaker.CEditor
 {
     public class ShipMakerWindow : EditorWindow
     {
-        public static BundleData curData;
+        public BundleData curData;
 
         private ReorderableList matList;
         private ReorderableList texturList;
@@ -22,26 +22,31 @@ namespace ShipMaker.CEditor
         private GUIStyle titleStyle;
         private string path;
 
+        private static bool init = false;
+
+        private Vector2 scrollPos;
+
         [OnOpenAsset(1)]
         public static bool ShowWindow(int instanceId, int line)
         {
+            init = false;
             UnityEngine.Object item = EditorUtility.InstanceIDToObject(instanceId);
 
             if (item is BundleData)
             {
-                curData = (BundleData)item;
-
                 ShipMakerWindow window = (ShipMakerWindow)GetWindow<ShipMakerWindow>(typeof(ShipMakerWindow));
                 window.titleContent = new GUIContent("Ship Builder");
-                window.minSize = new Vector2(500, 535);
-                
+                window.minSize = new Vector2(500, 525);
+
+                window.curData = (BundleData)item;
+
                 window.position = new Rect(Screen.width / 2, Screen.height / 2, 500, 250);
             }
 
             return true;
         }
 
-        public void OnEnable()
+        private void Init()
         {
             matList = new ReorderableList(curData.Materials, typeof(UnityEngine.Object), true, true, true, true);
             matList.drawElementCallback = MaterialsDrawCallback;
@@ -58,6 +63,8 @@ namespace ShipMaker.CEditor
             turList = new ReorderableList(curData.Turrets, typeof(UnityEngine.Object), true, true, true, true);
             turList.drawElementCallback = TurretsDrawCallback;
             turList.drawHeaderCallback = (Rect rect) => { EditorGUI.PrefixLabel(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), new GUIContent("Turrets"), EditorStyles.boldLabel); };
+
+            init = true;
         }
 
         private void TurretsDrawCallback(Rect rect, int index, bool isActive, bool isFocused)
@@ -102,6 +109,9 @@ namespace ShipMaker.CEditor
 
         private void OnGUI()
         {
+            if (!init)
+                Init();
+
             titleStyle = new GUIStyle(EditorStyles.largeLabel)
             {
                 alignment = TextAnchor.MiddleCenter
@@ -118,32 +128,36 @@ namespace ShipMaker.CEditor
                     curData.ShipBlank = (GameObject)EditorGUILayout.ObjectField("Ship Prefab", curData.ShipBlank, typeof(GameObject), false);
                     curData.ShipData = (TextAsset)EditorGUILayout.ObjectField("ShipData", curData.ShipData, typeof(TextAsset), false);
 
-                    turList.DoLayoutList();
-                    matList.DoLayoutList();
-                    texturList.DoLayoutList();
-                    meshList.DoLayoutList();
-
-                EditorGUILayout.EndVertical();
+            EditorGUILayout.EndVertical();
 
             EditorGUILayout.EndVertical();
 
-            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 
-                EditorGUILayout.BeginVertical(EditorStyles.objectFieldThumb);
+            turList.DoLayoutList();
+            matList.DoLayoutList();
+            texturList.DoLayoutList();
+            meshList.DoLayoutList();
 
-                    if (GUILayout.Button("Create Ship Data"))
-                    {
-                        SerializeData();
-                    }
+            EditorGUILayout.BeginVertical(EditorStyles.objectFieldThumb);
 
-                    if (GUILayout.Button("Create Ship Asset"))
-                    {
-                        CreateAsset();
-                    }
+            if (GUILayout.Button("Create Ship Data"))
+            {
+                SerializeData();
+            }
 
-                EditorGUILayout.EndVertical();
-            
+            if (GUILayout.Button("Create Ship Asset"))
+            {
+                CreateAsset();
+
+                GUIUtility.ExitGUI();
+            }
+
             EditorGUILayout.EndVertical();
+
+            EditorGUILayout.EndScrollView();
+
+            EditorUtility.SetDirty(curData);
         }
 
         private void CheckPath()
@@ -151,14 +165,14 @@ namespace ShipMaker.CEditor
             if (curData.Name == "")
             {
                 Debug.LogError("Enter a name.");
-
-                return;
             }
+            else 
+            {
+                path = Application.dataPath + "/ShipsResources/" + curData.Name;
 
-            path = Application.dataPath + "/" + curData.Name;
-
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+            }
         }
 
         private void CreateAsset()
@@ -204,20 +218,28 @@ namespace ShipMaker.CEditor
 
         private void SerializeData()
         {
-            CheckPath();
-
-            string jsonString;
-
-            MShipModelData modelData = curData.ShipBlank.GetComponent<MShipModelData>();
-
-            jsonString = JsonUtility.ToJson(modelData, true);
-
-            File.WriteAllText(path + "/ShipData.json", jsonString);
-
-            foreach (WeaponTurretData w in modelData.transform.GetComponentsInChildren<WeaponTurretData>())
+            if (curData.ShipBlank == null)
             {
-                jsonString = JsonUtility.ToJson(w, true);
-                File.WriteAllText(path + "/Turret_" + w.turretIndex + ".json", jsonString);
+                Debug.LogError("Set Ship Prefab First!");
+            }
+            else
+            {
+
+                CheckPath();
+
+                string jsonString;
+
+                MShipModelData modelData = curData.ShipBlank.GetComponent<MShipModelData>();
+
+                jsonString = JsonUtility.ToJson(modelData, true);
+
+                File.WriteAllText(path + "/ShipData.json", jsonString);
+
+                foreach (WeaponTurretData w in modelData.transform.GetComponentsInChildren<WeaponTurretData>())
+                {
+                    jsonString = JsonUtility.ToJson(w, true);
+                    File.WriteAllText(path + "/Turret_" + w.turretIndex + ".json", jsonString);
+                }
             }
         }
     }

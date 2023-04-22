@@ -1,0 +1,41 @@
+{
+    "id": 999,
+    "shipModelName": "Red Roadster",
+    "manufacturer": 0,
+    "shipClass": 2,
+    "shipRole": 12,
+    "modelBonus": [
+        "070.SB_SpacePilot",
+        "069.SB_RepChange_50%"
+    ],
+    "sellChance": 100,
+    "level": 5,
+    "hullPoints": 300,
+    "weaponSpace": 6,
+    "equipSpace": 25,
+    "cargoSpace": 35,
+    "passengers": 1,
+    "hangarDroneSpace": 4,
+    "hangarShipSpace": 0,
+    "crewSpace": [],
+    "speed": 14,
+    "agility": 15,
+    "mass": 70,
+    "sortPower": 1,
+    "rarity": 4,
+    "drawScale": 20.0,
+    "sizeScale": 3.0,
+    "repReq": {
+        "factionIndex": 0,
+        "repNeeded": 0
+    },
+    "factions": [
+        6
+    ],
+    "craftingMaterials": [],
+    "extraSurFXScale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    }
+}

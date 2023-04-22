@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77590a362ac0854eb56eca98e7da2e6, type: 3}
+  m_Name: RedRoadster
+  m_EditorClassIdentifier: 
+  Name: redRoadster
+  Icon: {fileID: 21300000, guid: cc4f4458998ec2045b27b6f205a63e14, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: 69cd338914d0a1a4281a3d152dd19797, type: 2}
+  - {fileID: 2100000, guid: 11f4999769d34c44fa1a5e499b84a615, type: 2}
+  Textures:
+  - {fileID: 2800000, guid: be2ebf53deb01b842ba4c53b86c567fc, type: 3}
+  - {fileID: 2800000, guid: 8be728e50637fe54494017df09817adc, type: 3}
+  - {fileID: 2800000, guid: f70d8c3cc62c6634fa0eb431ba12f2a7, type: 3}
+  Meshes:
+  - {fileID: 4300000, guid: 4fce9ea34f9bbda4580d7f91ca905c0b, type: 2}
+  - {fileID: 4300000, guid: 85228f96102ceb842859edc466e53229, type: 2}
+  ShipBlank: {fileID: 4841255233684215428, guid: e8f88ae81b01ecd42abfa7c9e6f4a5b7,
+    type: 3}
+  Turrets:
+  - {fileID: 4900000, guid: 2dba23eef194db649903bb59a8a54e37, type: 3}
+  - {fileID: 4900000, guid: 231406c1416b34a4ca52292ba82fe1df, type: 3}
+  ShipData: {fileID: 4900000, guid: 33a77a7775ef1a346a5e2e99dc2d2fb0, type: 3}

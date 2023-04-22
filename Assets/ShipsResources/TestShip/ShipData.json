@@ -1,0 +1,53 @@
+{
+    "id": 998,
+    "shipModelName": "Test Ship",
+    "manufacturer": 0,
+    "shipClass": 5,
+    "shipRole": 4,
+    "modelBonus": [
+        "SB_SpeedBoost",
+        "SB_Reputation"
+    ],
+    "sellChance": 100,
+    "level": 5,
+    "hullPoints": 800,
+    "weaponSpace": 3,
+    "equipSpace": 15,
+    "cargoSpace": 25,
+    "passengers": 6,
+    "hangarDroneSpace": 0,
+    "hangarShipSpace": 2,
+    "crewSpace": [
+        {
+            "position": 15,
+            "minRequired": 0,
+            "space": 1
+        },
+        {
+            "position": 4,
+            "minRequired": 0,
+            "space": 2
+        }
+    ],
+    "speed": 8,
+    "agility": 10,
+    "mass": 450,
+    "sortPower": 1,
+    "rarity": 1,
+    "drawScale": 20.0,
+    "sizeScale": 9.0,
+    "repReq": {
+        "factionIndex": 1,
+        "repNeeded": 2000
+    },
+    "factions": [
+        2,
+        1
+    ],
+    "craftingMaterials": [],
+    "extraSurFXScale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    }
+}

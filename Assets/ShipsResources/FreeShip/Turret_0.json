@@ -1,0 +1,57 @@
+{
+    "turretName": "turret_0",
+    "turretIndex": 0,
+    "type": 1,
+    "degreesLimit": 0.0,
+    "turnSpeed": 20.0,
+    "spriteName": "spinal_gun",
+    "spinalMount": true,
+    "totalSpace": 10.0,
+    "maxInstalledWeapons": 10,
+    "turretMode": 1,
+    "manned": false,
+    "hasSpecialStats": true,
+    "baseWeaponMods": {
+        "dmgBonus": 0.0,
+        "tempDmgBonus": [
+            {
+                "type": 5,
+                "bonus": 1.0
+            }
+        ],
+        "criticalChanceBonus": 0.0,
+        "criticalDamageBonus": 0.0,
+        "armorPenBonus": 0.0,
+        "massKiller": false,
+        "rangeBonus": 0,
+        "rangeBonusPerc": 0.0,
+        "proximityDmgMod": 0.0,
+        "aoeBonus": 0.0,
+        "projectileSpeedBonus": 0,
+        "projectileSpeedPerc": 0.0,
+        "autoTargeting": false,
+        "heatCapBonus": 0,
+        "heatCapMod": 0.0,
+        "weaponHeatMod": 0.0,
+        "chargeTime": 2.0,
+        "chargedFireTime": 10.0,
+        "chargedFireCooldown": 4.0,
+        "fluxDamageMod": 0.0,
+        "spinalMounted": true,
+        "explodeBoostChance": 0,
+        "explodeBoost": 0.0,
+        "sizeMod": 0.0,
+        "weaponChargedBaseDamageBoost": 2.0
+    },
+    "extraGuns": [],
+    "alternateFire": false,
+    "iconTranslate": {
+        "x": -1.2000000476837159,
+        "y": 1.850000023841858
+    },
+    "extraGunsParent": "",
+    "extraGunsParentTransform": {
+        "instanceID": 0
+    },
+    "extraGunsTransforms": []
+}

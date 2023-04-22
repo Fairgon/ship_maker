@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77590a362ac0854eb56eca98e7da2e6, type: 3}
+  m_Name: TestShip
+  m_EditorClassIdentifier: 
+  Name: TestShip
+  Icon: {fileID: 21300000, guid: c7d340df54185b64895fce0c268d447b, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: 4a197f981c25dc04e9ba1ef199bd23ba, type: 2}
+  Textures:
+  - {fileID: 2800000, guid: e7b2f5921af5e1144a96cd9fa1d93f5f, type: 3}
+  - {fileID: 2800000, guid: 1c298587cbb326f43a6ece58a8b061a8, type: 3}
+  - {fileID: 2800000, guid: 077a7e1623506f04b9b1fb1defb27224, type: 3}
+  - {fileID: 2800000, guid: bc831c7c2a0709e4bb4e406833b4f674, type: 3}
+  Meshes:
+  - {fileID: 4300000, guid: dc519f7bab06a9a4b8dea74d19805392, type: 2}
+  - {fileID: 4300000, guid: 07000c404b2aab94d8cb01ee4069fae7, type: 2}
+  - {fileID: 4300000, guid: aef42e5a3c4f3c646ba2aae155a85fc9, type: 2}
+  ShipBlank: {fileID: 4695746426304668566, guid: 635324bbaa47783498fe6619627e2ec8,
+    type: 3}
+  Turrets:
+  - {fileID: 4900000, guid: 4cad3f2b33caaee4cb0ba74f70130ff7, type: 3}
+  - {fileID: 4900000, guid: 4076dd2e00821d94a8789a6f594f64f0, type: 3}
+  - {fileID: 4900000, guid: 9944b91836df67c4d954f32320ee1643, type: 3}
+  - {fileID: 4900000, guid: 57ea193fb14b83b409a505805e59edc0, type: 3}
+  ShipData: {fileID: 4900000, guid: 0baf41b99733c2e499e9bc796c1cbae1, type: 3}
