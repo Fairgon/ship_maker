@@ -86,7 +86,7 @@ namespace ShipMaker.CEditor
             
             for(int index = 0; index < model.transform.childCount; ++index)
             {
-                Transform t = ship.transform.GetChild(index);
+                Transform t = model.transform.GetChild(index);
 
                 Undo.RecordObject(t, t.name);
                 t.position -= Vector3.up * higherPos;
@@ -97,7 +97,7 @@ namespace ShipMaker.CEditor
 
             for (int index = 0; index < thrusters.transform.childCount; ++index)
             {
-                Transform t = ship.transform.GetChild(index);
+                Transform t = thrusters.transform.GetChild(index);
 
                 Undo.RecordObject(t, t.name);
                 t.position -= Vector3.up * higherPos;
