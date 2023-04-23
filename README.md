@@ -22,6 +22,9 @@ You also need to add a collider to ShipBlank. It can be BoxCollide, CapsuleColli
 
 Once you've finished customizing the ship, drag the ShipBlank from the scene to your assets folder to create its prefab.
 
+<b>Do not rename the root ShipBlank Game Object</b>
+<b>The ship icon should be a Sprite and be called "Icon"</b>
+
 #### Turrets
 
 In the WeaponSlots, you must add turrets.
