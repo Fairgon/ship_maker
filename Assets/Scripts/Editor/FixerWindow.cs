@@ -116,7 +116,8 @@ namespace ShipMaker.CEditor
                 higherPos = Mathf.Max(higherPos, t.parent.position.y);
             }
 
-            PrefabUtility.ApplyPrefabInstance(ship, InteractionMode.UserAction);
+            if(PrefabUtility.IsPartOfPrefabInstance(ship))
+                PrefabUtility.ApplyPrefabInstance(ship, InteractionMode.UserAction);
         }
     }
 }
